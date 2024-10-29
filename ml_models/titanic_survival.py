@@ -15,7 +15,7 @@ def load_model():
 
 try:
     model = load_model()
-    print("Model loaded successfully.")
+    print("Titanic Model loaded successfully.")
 except FileNotFoundError as e:
     print(e)
 except Exception as e:
