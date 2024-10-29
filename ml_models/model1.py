@@ -1,15 +1,15 @@
-import tensorflow as tf
+import joblib
 import os
 
 # Define model path
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-MODEL_PATH = os.path.join(BASE_DIR, 'saved_models', 'model2.h5')
+MODEL_PATH = os.path.join(BASE_DIR, 'saved_models', 'model2.joblib')  # Use .joblib for sklearn models
 
 def load_model():
     if not os.path.exists(MODEL_PATH):
         raise FileNotFoundError(f"Model file not found at {MODEL_PATH}")
-    # Load the model using TensorFlow 2.14+
-    model = tf.keras.models.load_model(MODEL_PATH, compile=False)  # Avoid re-compilation for quicker loading
+    # Load the model using joblib
+    model = joblib.load(MODEL_PATH)
     return model
 
 try:

@@ -10,7 +10,6 @@ class UserBase(BaseModel):
     email: EmailStr = Field(..., example="john.doe@example.com")
     phone_number: str = Field(..., example="1234567890")
 
-
 class UserCreate(UserBase):
     password: str = Field(..., min_length=8, example="strongpassword")
 
@@ -43,7 +42,7 @@ class TokenData(BaseModel):
 # Permission Schemas
 class PermissionBase(BaseModel):
     user_id: int
-    competition_access: str = Field(..., example="Competition A")
+    backend_access: str = Field(..., example="All")
 
 class PermissionCreate(PermissionBase):
     pass

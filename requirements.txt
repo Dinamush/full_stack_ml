@@ -16,7 +16,6 @@ python-jose==3.3.0
 email-validator==1.2.1
 
 # Machine Learning
-tensorflow==2.18.0  # Updated TensorFlow version for NumPy 2.x compatibility
+tensorflow==2.18.0  
 
-# Optional: pybind11 for module builds with cross-compatibility for NumPy 2.x
-pybind11>=2.12  # Uncomment if needed for specific modules requiring compatibility with NumPy 2.x
+joblib

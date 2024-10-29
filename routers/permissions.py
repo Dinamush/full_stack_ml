@@ -9,7 +9,6 @@ from typing import List
 
 # Ensure that get_current_user is imported from auth.py and uses the updated oauth2_scheme
 
-
 router = APIRouter(
     prefix="/permissions",
     tags=["permissions"]
@@ -39,7 +38,7 @@ def assign_permission(
     # Check if the permission already exists
     existing_permission = db.query(Permission).filter(
         Permission.user_id == permission_data.user_id,
-        Permission.competition_access == permission_data.competition_access
+        Permission.backend_access == permission_data.backend_access
     ).first()
     if existing_permission:
         raise HTTPException(
@@ -50,7 +49,7 @@ def assign_permission(
     # Create new permission
     permission = Permission(
         user_id=permission_data.user_id,
-        competition_access=permission_data.competition_access
+        backend_access=permission_data.backend_access
     )
     db.add(permission)
     try:
@@ -112,7 +111,7 @@ def revoke_permission(
 
     permission = db.query(Permission).filter(
         Permission.user_id == permission_data.user_id,
-        Permission.competition_access == permission_data.competition_access
+        Permission.backend_access == permission_data.backend_access
     ).first()
     if not permission:
         raise HTTPException(

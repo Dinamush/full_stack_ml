@@ -39,10 +39,10 @@ class Permission(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     user_id = Column(Integer, ForeignKey('users.id'), nullable=False)
-    competition_access = Column(String(255), nullable=False)
+    backend_access = Column(String(255), nullable=False)
 
     user = relationship("User", back_populates="permissions")
 
     __table_args__ = (
-        UniqueConstraint('user_id', 'competition_access', name='uq_user_competition_access'),
+        UniqueConstraint('user_id', 'backend_access', name='uq_user_backend_access'),
     )
