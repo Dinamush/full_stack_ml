@@ -1,4 +1,5 @@
 import joblib
+from utils.df import format_inputs
 import os
 
 # Define model path
