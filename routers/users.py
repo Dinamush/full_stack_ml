@@ -10,7 +10,7 @@ from auth import (
 )
 from models import User
 from database import get_db
-from schemas import UserCreate, UserResponse, UserLogin, Token
+from schemas.schemas import UserCreate, UserResponse, UserLogin, Token
 from datetime import timedelta
 from typing import List, Optional
 from fastapi.security import OAuth2PasswordBearer

@@ -4,7 +4,7 @@ from sqlalchemy.exc import IntegrityError
 from database import get_db
 from models import Permission, User
 from auth import get_current_user
-from schemas import PermissionCreate, PermissionResponse
+from schemas.schemas import PermissionCreate, PermissionResponse
 from typing import List
 
 # Ensure that get_current_user is imported from auth.py and uses the updated oauth2_scheme
