@@ -1,0 +1,19 @@
+<!-- base.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}My Portfolio{% endblock %}</title>
+    <!-- In your base.html or other templates -->
+    <link rel="stylesheet" href="{{ url_for('static', path='css/style.css') }}">
+    <script src="{{ url_for('static', path='js/main.js') }}"></script>
+    <img src="{{ url_for('static', path='images/your_image.jpg') }}" alt="An Image">
+    <!-- Include CSS and meta tags -->
+</head>
+<body>
+    {% include 'components/navbar.html' %}
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+    <!-- Include JavaScript files -->
+</body>
+</html>

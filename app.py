@@ -1,7 +1,10 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from routers import users, permissions, ml
 from database import engine, Base
+
+from fastapi.templating import Jinja2Templates
+from fastapi.responses import HTMLResponse
 import logging
 
 # Initialize FastAPI app
@@ -25,9 +28,18 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-@app.get("/")
-async def read_root():
-    return {"message": "Welcome to the user management system"}
+templates = Jinja2Templates(directory="templates")
+
+from fastapi.staticfiles import StaticFiles
+
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
+
+@app.get("/", response_class=HTMLResponse)
+async def read_root(request: Request):
+    return templates.TemplateResponse("index.html", {"request": request})
+
+
 
 # Ensure all tables are created at startup
 @app.on_event("startup")

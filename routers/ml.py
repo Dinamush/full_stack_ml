@@ -9,6 +9,7 @@ from schemas.ml import (
 )
 from services.ml_service import predict_model1, predict_model2, predict_titanic
 from utils.df import format_inputs  # Ensure this path is correct based on your project structure
+import pandas as pd
 
 
 router = APIRouter(prefix="/ml", tags=["Machine Learning"])
@@ -46,6 +47,9 @@ async def titanic_predict(input_data: TitanicInput):
     try:
         # Preprocess the input data
         df = format_inputs([input_data])
+        
+        df.head()
+        
         
         # Invoke the prediction service
         prediction = predict_titanic(df)
